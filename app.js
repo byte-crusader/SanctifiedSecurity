@@ -15,7 +15,7 @@ menuToggle.addEventListener('click', () =>{
         menuToggle.querySelector('span:nth-child(3)').style.transform = 'translateX(60px)';
         navLinks.forEach(link => {
         link.style.opacity = 1;
-        link.style.transition = 'ease-in-out .6s';
+        link.style.transition = 'ease-in-out 1.5s';
         });
       } else {
         menu.classList.remove("active");
@@ -27,7 +27,7 @@ menuToggle.addEventListener('click', () =>{
         menuToggle.querySelector('span:nth-child(3)').style.transform = '';
         navLinks.forEach(link => {
         link.style.opacity = 0;
-        link.style.transition = 'ease-in-out .6s';
+        link.style.transition = 'ease-in-out .2s';
         });
       }
 })
