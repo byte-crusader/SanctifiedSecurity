@@ -2,11 +2,7 @@ const menuToggle = document.querySelector('.toggle');
 const hamCheckbox = document.getElementById('ham');
 const navMenu = document.getElementById('menu');
 const navLinks = document.querySelectorAll('nav a');
-<<<<<<< HEAD
-
-=======
 const lis = document.querySelectorAll('#menu ul li');
->>>>>>> 0608947 (Personal Website)
 
 menuToggle.addEventListener('click', () =>{
     if (!menu.classList.contains("active")) {
@@ -19,17 +15,12 @@ menuToggle.addEventListener('click', () =>{
         menuToggle.querySelector('span:nth-child(3)').style.transform = 'translateX(60px)';
         navLinks.forEach(link => {
         link.style.opacity = 1;
-<<<<<<< HEAD
-        link.style.transition = 'ease-in-out 1.5s';
-        });
-=======
         // link.style.transition = 'ease-in-out 2s';
         
         });
         lis.forEach(function(li) {
           li.classList.add('slide-from-right');
       });
->>>>>>> 0608947 (Personal Website)
       } else {
         menu.classList.remove("active");
         navMenu.style.transform = 'translateY(-200%)';
@@ -40,16 +31,11 @@ menuToggle.addEventListener('click', () =>{
         menuToggle.querySelector('span:nth-child(3)').style.transform = '';
         navLinks.forEach(link => {
         link.style.opacity = 0;
-<<<<<<< HEAD
-        link.style.transition = 'ease-in-out .2s';
-        });
-=======
         // link.style.transition = 'ease-in-out .2s';
         });
         lis.forEach(function(li) {
           li.classList.remove('slide-from-right');
       });
->>>>>>> 0608947 (Personal Website)
       }
 })
 

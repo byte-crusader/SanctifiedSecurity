@@ -1,64 +1,24 @@
 :root {
-<<<<<<< HEAD
-    --border-type: 2px rgb(47, 180, 47) double;
-    --color-type: rgb(47, 180, 47);
-}
-
-*, *::before, *::after {
-=======
     --border-type: 2px #00FF00 double;
     --color-type: #00FF00;
 }
 
 *{
->>>>>>> 0608947 (Personal Website)
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
 
 body {
-<<<<<<< HEAD
-    font-size: .7rem;
-    color: var(--color-type);
-    background-color: black;
-    /* height:10vh; */
-=======
     font-size: 1.25rem;
     color: var(--color-type);
     background-color: black;
     font-family: 'Roboto Mono', monospace;
     /* height:100vh; */
->>>>>>> 0608947 (Personal Website)
 }
 
 h1 {
     display: inline;
-<<<<<<< HEAD
-    font-family: 'Dot Matrix', sans-serif;
-    text-align: end;
-    margin-right: 0.03125rem;
-    white-space: nowrap;
-    color: green;
-    position: absolute;
-    top: 0.6875rem;
-    right: 0;
-    z-index: 998;
-    margin-right:0.625rem;
-}
-
-header {
-    padding-bottom: 1rem;
-    top: 0;
-    background-color: black;
-    position: absolute;
-    width: 100%;
-    z-index: 999;
-    color: var(--color-type);
-    position: fixed;
-}
-
-=======
     font-family: 'Dot Matrix';
     text-align: end;
     margin-right: 1.8rem;
@@ -98,7 +58,6 @@ header {
 .slide-from-right {
     transform: translateX(0);
 }
->>>>>>> 0608947 (Personal Website)
 nav {
     box-shadow: inset 0 0 0.46875rem rgba(0, 128, 0, 0.527);
     font-family: 'Dot Matrix';
@@ -106,14 +65,6 @@ nav {
     border-bottom: var(--border-type);
     width: 100%;
     text-align: left;
-<<<<<<< HEAD
-    margin-top: 4rem;
-    transform: translateY(-100%);
-    background-color: rgba(41, 40, 40);
-    transition: transform 1s ease-in-out;
-    z-index: 900;
-    position: fixed;
-=======
     /* margin-top: 7rem; */
     transform: translateY(-100%);
     background-color: #0F0F0F;
@@ -123,7 +74,6 @@ nav {
     padding: 1rem;
     overflow: hidden;
     color:var(--color-type);
->>>>>>> 0608947 (Personal Website)
 }
 
 nav ul {
@@ -133,19 +83,6 @@ nav ul {
 }
 
 nav li {
-<<<<<<< HEAD
-    padding: 0.3125rem 0.625rem;
-    margin-left: 0.625rem;
-    font-size: 1.5rem;
-    list-style: none;
-}
-
-.nav-a {
-   cursor: pointer;
-    opacity: 0;
-    font-size: .7rem;
-    text-decoration: none;
-=======
     padding: 0.9rem 0.9rem;
     margin-left: 0.425rem;
     list-style: none;
@@ -163,7 +100,6 @@ nav a{
    cursor: pointer;
     opacity: 0;
     font-size: 20px;
->>>>>>> 0608947 (Personal Website)
     font-weight: bold;
     color: var(--color-type);
 }
@@ -178,10 +114,6 @@ nav a{
     color: greenyellow !important;
 }
 main{
-<<<<<<< HEAD
-    padding-top: 6rem;
-}
-=======
     height: auto; 
     overflow-y: auto;
 }
@@ -230,14 +162,11 @@ main{
     color:black;
     box-shadow: 0 0 20px 5px rgba(0, 255, 0, 0.5);
   }
->>>>>>> 0608947 (Personal Website)
 #content {
     width: 100%;
     text-align: center;
     z-index: 90;
 }
-<<<<<<< HEAD
-=======
 #content p{
     font-size:.8rem;
     color:white;
@@ -249,7 +178,6 @@ margin: auto;
     
 }
 
->>>>>>> 0608947 (Personal Website)
 .mid-content{
     padding:1rem;
     padding-left:1.5rem;
@@ -261,8 +189,6 @@ margin: auto;
     margin-bottom: 20px;
     font-size: 12px;
 }
-<<<<<<< HEAD
-=======
 .tableHead {
     width: 75vw;
     max-width: 500px;
@@ -301,30 +227,12 @@ margin: auto;
   .tableLinks span:hover {
     color: greenyellow;
   }
->>>>>>> 0608947 (Personal Website)
 table {
     width: 100%;
     border-collapse: collapse;
 }
 
 th, td {
-<<<<<<< HEAD
-    border: 0.03125rem solid green;
-    padding: 0.625rem;
-    text-align: center;
-}
-
-#links th {
-    background-color: black;
-}
-
-#links td {
-    background-color: green;
-}
-
-#links td a {
-    color: black;
-=======
     border: 0.03125rem solid #00FF00;
     padding: 0.625rem;
     text-align: center;
@@ -345,16 +253,11 @@ th, td {
 
 #links td a {
     color: white;
->>>>>>> 0608947 (Personal Website)
     text-decoration: none;
 }
 
 #links td a:hover {
     text-decoration: underline;
-<<<<<<< HEAD
-}
-
-=======
     color: greenyellow;
 }
 /* About page start */
@@ -409,23 +312,15 @@ th, td {
 }
 
 /* About page end */
->>>>>>> 0608947 (Personal Website)
 footer {
     text-align: center;
     padding: 1.25rem;
     background-color: black;
-<<<<<<< HEAD
-    position: fixed;
-    width: 100%;
-    left: 0;
-    bottom: 0;
-=======
     /*position: fixed;*/
     width: 100%;
     left: 0;
     bottom: 0;
     margin-top:3rem;
->>>>>>> 0608947 (Personal Website)
 }
 
 footer p {
@@ -451,13 +346,6 @@ footer p {
 }
 
 .toggle {
-<<<<<<< HEAD
-    border: 0.03125rem solid green;
-    margin-top: 0.9375rem;
-    margin-left: 0.625rem;
-    overflow: hidden;
-    position: relative;
-=======
     border: 0.03125rem solid var(--color-type);
     /*margin-top: 0.9375rem;*/
     /*margin-left: 0.625rem;*/
@@ -467,7 +355,6 @@ footer p {
     left: 0;
     z-index: 999;
     margin-left:1.5rem;
->>>>>>> 0608947 (Personal Website)
     width: 2.5rem;
     height: 2.5rem;
     background-color: rgb(0, 0, 0);
@@ -477,10 +364,7 @@ footer p {
     justify-content: center;
     cursor: pointer;
     transition: all cubic-bezier(.79,.14,.15,.86) .3s;
-<<<<<<< HEAD
-=======
     
->>>>>>> 0608947 (Personal Website)
 }
 
 .toggle:hover {
@@ -515,15 +399,10 @@ footer p {
 }
 
 @media screen and (min-width: 43.75rem) {
-<<<<<<< HEAD
-    h1 {
-        top: 4%;
-=======
 
     h1 {
         top: 4%;
         margin-top:2rem;
->>>>>>> 0608947 (Personal Website)
     }
 
     .ham-label {
@@ -537,16 +416,6 @@ footer p {
     }
 
     nav {
-<<<<<<< HEAD
-        top: -4%;
-        box-shadow: none;
-        width: 50%;
-        position: absolute;
-        border: none;
-        background-color: rgb(0, 0, 0);
-        color: green;
-        z-index: 999;
-=======
         top:0%;
         box-shadow: none;
         width: 50%;
@@ -559,26 +428,18 @@ footer p {
         margin-top:6rem;
         /* position: fixed; */
         display:block;
->>>>>>> 0608947 (Personal Website)
     }
 
     nav ul {
         margin: 0;
         flex-direction: row;
-<<<<<<< HEAD
-        position: relative;
-        z-index: 1001;
-=======
         /* position: relative; */
         z-index: 1001;
     
->>>>>>> 0608947 (Personal Website)
     }
 
     nav li {
         margin: 0;
-<<<<<<< HEAD
-=======
         display: inline;
             width:7vw;
     background-color:black;
@@ -587,13 +448,10 @@ footer p {
     }
     .nav-a{
         opacity: 1;
->>>>>>> 0608947 (Personal Website)
     }
 
     nav a {
         opacity: 1;
-<<<<<<< HEAD
-=======
      font-size: 20px;
      
     }
@@ -603,6 +461,5 @@ footer p {
     footer{
         margin-top: 6rem;
         position: relative;
->>>>>>> 0608947 (Personal Website)
     }
 }
