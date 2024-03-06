@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Us</title>
+    <link href="http://fonts.cdnfonts.com/css/dot-matrix" rel="stylesheet">
+    <link rel="stylesheet" href="stylings.css">
+    <link rel="icon" href="/binary.png" type="image/png">
+ <link rel="stylesheet" href="https://sanctifiedsecurity.com/stylings.css">
+</head>
+<body>
+        <header>
+   <div class="head_container">
+                    <input type="checkbox" id="ham" class="ham">
+                   
+                        <h1>Sanctified <br>Security</h1>
+                    </div>
+       
+        <label for="ham" class="ham-label toggle">
+             <span></span>
+             <span></span>
+             <span></span>
+        </label>
+
+    </header>
+    <nav id="menu">
+        <ul>
+            <!--<li><a class="nav-a" href="contact.html"> Contact</a></li>-->
+            <li><a class="nav-a" href="index.html"> Home</a></li>
+            <li><a class="nav-a" href="about.html"> About</a></li>
+        </ul>
+    </nav>
+</div>
+ <div class="contactOutter">
+    <form action="PHPMailer/contact.php" method="post" enctype="multipart/form-data">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone">
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+
+        <label for="userfile">Attach Files:</label>
+            <div id="file-input-container">
+    <!--<input name="userfile[]" type="file" multiple="multiple">-->
+    <!-- <br/>-->
+     </div>
+        <button type="button" onclick="addFileInput()">Click To Add File</button>
+        <button type="button" onclick="clearAttachments()">Clear Attachments</button>
+        <button type="submit">Submit</button>
+    </form>
+    </div>
+        <footer style="position:fixed;">
+        <p>&copy; 2024 Sanctified Security</p>
+    </footer>
+    <script>
+                function addFileInput() {
+            var fileInputContainer = document.getElementById('file-input-container');
+            var newFileInput = document.createElement('input');
+            newFileInput.setAttribute('type', 'file');
+            newFileInput.setAttribute('name', 'userfile[]');
+            newFileInput.setAttribute('multiple', 'multiple');
+            fileInputContainer.appendChild(newFileInput);
+            fileInputContainer.appendChild(document.createElement('br'));
+        }
+
+        function clearAttachments() {
+            var fileInputContainer = document.getElementById('file-input-container');
+            fileInputContainer.innerHTML = '';
+}
+    </script>
+        <script src="app.js"></script>
+        <script src="colors.js"></script>
+</body>
+</html>

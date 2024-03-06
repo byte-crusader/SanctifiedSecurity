@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanctified Security</title>
+    <link rel="stylesheet" href="stylings.css">
+    <link href="http://fonts.cdnfonts.com/css/dot-matrix" rel="stylesheet">
+    <link rel="icon" href="/binary.png" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<script>
+function scrollToSlashdot() {
+    let section = document.getElementById('slashdotTable');
+    section.scrollIntoView({ behavior: 'smooth' });
+}
+
+function scrollToGold() {
+    let section = document.getElementById('goldsilverTable');
+    section.scrollIntoView({ behavior: 'smooth' });
+}
+
+function scrollToHacker() {
+    let section = document.getElementById('hackerNews');
+    section.scrollIntoView({ behavior: 'smooth' });
+}
+function scrollToTop() {
+    let section = document.getElementById('scrollTop');
+    section.scrollIntoView({ behavior: 'smooth' });
+}
+
+</script>
+</head>
+<body>
+    <header>
+   <div class="head_container">
+                    <input type="checkbox" id="ham" class="ham">
+                   
+                        <h1>Sanctified <br>Security</h1>
+                    </div>
+       
+        <label for="ham" class="ham-label toggle">
+             <span></span>
+             <span></span>
+             <span></span>
+        </label>
+
+    </header>
+
+
+     <main>
+        <nav id="menu">
+            <ul>
+                <li><a class="nav-a" href="/contact.html"> Contact</a></li>
+                <!--<li><a class="nav-a" href="page_2"> Lab</a></li>-->
+                <li><a class="nav-a" href="/about.html"> About</a></li>
+            </ul>
+        </nav>
+
+        <div class="about-section">
+          <h2>Welcome to Sanctified Security!</h2>
+          
+          <p>
+            "The Matrix is everywhere. It is all around us. Even now, in this very room. You can see it when you look out your window or when you turn on your television. You can feel it when you go to work, when you go to church, when you pay your taxes. It is the world that has been pulled over your eyes to blind you from the truth."
+          </p>
+          <p>
+            - Morpheus
+          </p>
+          <a href="/about.html" class="matrix-button">Learn More</a>
+        </div>
+        <section id="links">
+          <div class="tableHead">
+            <div class="tableLinks">
+              <section id="content">
+                <p>Please enjoy this congregation of interesting news sources(via RSS).</p>
+            </section>
+              <span onclick="scrollToSlashdot()">Slashdot</span>
+              <span onclick="scrollToGold()">Gold and silver</span>
+              <span onclick="scrollToHacker()">Hacker News</span>
+            </div>
+          </div>
+            <table>
+                <!-- <thead>
+                   <tr>
+                       <th></th>
+                   </tr>
+                </thead> -->
+                <tbody id="slashdotTable">
+                  <!-- <h2>Slashdot</h2> -->
+                </tbody>
+                <tbody id="goldsilverTable">
+                </tbody>
+                <tbody id="hackerNews">
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+      <div class="toggleContainer">
+        <h3>Toggle Site Theme</h3>
+        <div id="changeColors" class="toggle-container" onclick="toggleButton()">
+          <div class="toggle-track"></div>
+          <div class="toggle-handle"></div>
+      </div>
+    </div>
+        <p>&copy; 2024 Sanctified Security</p>
+    </footer>
+
+    <script src="app.js"></script>
+    <script src="https://storage.googleapis.com/feednami-static/js/feednami-client-v1.0.1.js"></script>
+<script>
+  let slashdot = 'http://rss.slashdot.org/Slashdot/slashdotMain'
+  function scrollToTop() {
+    const targetScrollPosition = document.documentElement.scrollHeight * 0.1;
+
+    window.scrollTo({ top: targetScrollPosition, behavior: 'smooth' });
+  }
+  feednami.load(slashdot, function(result){
+    if(result.error){
+      console.log(result.error)
+    }
+    else{
+      let entries = result.feed.entries
+      let tableBody = document.getElementById('slashdotTable');
+      let heading = document.createElement("h2");
+      let span = document.createElement("span");
+      heading.textContent = "Slashdot";
+      heading.setAttribute('id', 'tableHeading');
+      span.textContent = "^";
+      span.setAttribute('id', 'scrollToTop');
+      span.addEventListener('click', scrollToTop);
+         tableBody.appendChild(heading);
+      tableBody.appendChild(span);
+   
+      for(var i = 0; i < entries.length; i++){
+        let entry = entries[i];
+        let row = tableBody.insertRow();
+        let cell = row.insertCell();
+        let link = document.createElement('a');
+        link.href = entry.link;
+        link.textContent = entry.title;
+        cell.appendChild(link);
+        // cell.appendChild(document.createTextNode(entry.title));
+      }
+    }
+  })
+
+  let goldsilverTable = 'https://goldbroker.com/news.rss'
+  feednami.load(goldsilverTable, function(result){
+    if(result.error){
+      console.log(result.error)
+    }
+    else{
+      let entries = result.feed.entries
+      let tableBody = document.getElementById('goldsilverTable');
+      let heading = document.createElement("h2");
+      let span = document.createElement("span");
+      heading.textContent = "Gold And Silver";
+      heading.setAttribute('id', 'tableHeading');
+      span.textContent = "^";
+      span.setAttribute('id', 'scrollToTop');
+      span.addEventListener('click', scrollToTop);
+         tableBody.appendChild(heading);
+      tableBody.appendChild(span);
+      for(var i = 0; i < entries.length; i++){
+        let entry = entries[i];
+        let row = tableBody.insertRow();
+        let cell = row.insertCell();
+        let link = document.createElement('a');
+        link.href = entry.link;
+        link.textContent = entry.title;
+        cell.appendChild(link);
+        // cell.appendChild(document.createTextNode(entry.title));
+      }
+    }
+  })
+  let hackerNews = 'https://hnrss.org/frontpage'
+  feednami.load(hackerNews, function(result){
+    if(result.error){
+      console.log(result.error)
+    }
+    else{
+      let entries = result.feed.entries
+      let tableBody = document.getElementById('hackerNews');
+      let heading = document.createElement("h2");
+      let span = document.createElement("span");
+      heading.textContent = "Hacker News";
+      heading.setAttribute('id', 'tableHeading');
+      span.textContent = "^";
+      span.setAttribute('id', 'scrollToTop');
+      span.addEventListener('click', scrollToTop);
+         tableBody.appendChild(heading);
+      tableBody.appendChild(span);
+         
+      for(var i = 0; i < entries.length; i++){
+        let entry = entries[i];
+        let row = tableBody.insertRow();
+        let cell = row.insertCell();
+        let link = document.createElement('a');
+        link.href = entry.link;
+        link.textContent = entry.title;
+        cell.appendChild(link);
+        // cell.appendChild(document.createTextNode(entry.title));
+      }
+    }
+  })
+</script>
+<script>
+  function toggleButton() {
+      var toggleContainer = document.querySelector('.toggle-container');
+      toggleContainer.classList.toggle('active');
+  }
+  </script>
+<script src="colors.js"></script>
+</body>
+</html>
