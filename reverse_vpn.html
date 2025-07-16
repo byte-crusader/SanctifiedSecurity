@@ -30,42 +30,63 @@
 
         <nav id="menu">
             <ul>
+                <li><a class="nav-a" href="/index.html"> Home</a></li>
                 <li><a class="nav-a" href="/contact.html"> Contact</a></li>
                 <li><a class="nav-a" href="/projects.html">Projects</a></li>
-                <li><a class="nav-a" href="/index.html"> Home</a></li>
+                <li><a class="nav-a" href="/about.html"> About</a></li>
             </ul>
         </nav>
         <main class="about-page">
 
 <!--            <div class="container"> -->
     <div class="section">
+    <h2>Setting up a reverse VPN</h2>
       <p> I have nicknamed this project <strong>"The Archive"</strong>, this is an example of how you can use a reverse VPN tunnel to access internal services inside your home network without the need to port forward. This idea was born from frustration after finding out Starlink does not provide the ability to open inbound ports to your LAN without paying a rather large increase in your monthly bill, to solve this issue I began researching how I could utilize wireguard to create this idea. This project resides on a now vintage Optiplex 3010, The Archive is hosted via Proxmox on a dedicated Ubuntu Server virtual machine. Network traffic is securely channeled through a reverse VPN WireGuard connection, originating from my home network and directed to a Raspberry PI serving as the endpoint with a static IP address.</p>
 
       <p>Utilizing NGINX reverse proxy, incoming requests to the public IP address are effectively forwarded to the internal WireGuard IP address located on the JS Wiki server. Custom NAT rules configured with nftables are set up to forward incoming requests to the service on port 80 or 443, allowing access without any router-level port forwarding. Additionally, all traffic from a client is routed through Cloudflare first, providing two layers of proxies in front of my web service.</p>
     </div>
 
     <div class="section">
-      <h2>Hardware Specifications</h2>
-      <ul>
-        <li>2x 500GB Hard Drives Running RAID1</li>
-        <li>16GB DDR3 RAM</li>
-        <li>Intel CPU</li>
-      </ul>
+
+<table class="hardware-specs">
+    <thead>
+        <tr>
+
+            <th colspan="2">Hardware Specifications</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Storage</td>
+            <td>2x 500GB Hard Drives Running RAID1</td>
+        </tr>
+        <tr>
+            <td>Memory</td>
+            <td>16GB DDR3 RAM</td>
+        </tr>
+        <tr>
+            <td>Processor</td>
+            <td>Intel CPU</td>
+        </tr>
+    </tbody>
+</table>
     </div>
 
     <div class="section">
       <h2>Optiplex Configs</h2>
       <h3>Routing</h3>
-      <pre class="terminal"><span class="archive">root@archive:~#</span> ip route
+      <pre class="terminal">root@archive:~#<span class="blinking-cursor">ip route</span>
+      <span class="archive">
 default via 192.168.0.1 dev ens18 proto static
 172.17.0.0/16 dev docker0 proto kernel scope link src 172.17.0.1 linkdown
 172.18.0.0/16 dev br-e4a414880a92 proto kernel scope link src 172.18.0.1
 192.168.0.0/24 dev ens18 scope link
 192.168.1.0/24 dev wg0 proto kernel scope link src 192.168.1.2</pre>
-
+</span>
       <h3>NFT Ruleset</h3>
-      <pre class="terminal"><span class="archive">root@archive:~#</span> nft list ruleset
-table inet filter {
+      <pre class="terminal ">root@archive:~# <span class="blinking-cursor">nft list ruleset</span>
+
+<span class="archive">table inet filter {
     chain input {
         type filter hook input priority filter; policy accept;
         ct state new tcp dport 80 iifname "wg0" accept
@@ -86,11 +107,12 @@ table ip nat {
     chain postrouting {
         type nat hook postrouting priority srcnat; policy accept;
         oifname "ens18" masquerade
-    }
+    }</span>
 }</pre>
 
       <h3>WireGuard Config</h3>
-      <pre class="terminal"><span class="archive">root@archive:~#</span> cat /etc/wireguard/wg0.conf
+      <pre class="terminal">root@archive:~# <span class="blinking-cursor">cat /etc/wireguard/wg0.conf</span>
+      <span class="archive">
 [Interface]
 Address = 192.168.1.2/24
 SaveConfig = false
@@ -102,9 +124,10 @@ PublicKey = REDACTED=
 AllowedIPs = 192.168.1.0/24
 Endpoint = 162.217.170.62:51820
 PersistentKeepalive = 60</pre>
-
+</span>
       <h3>WireGuard Status</h3>
-      <pre class="terminal"><span class="archive">root@archive:~#</span> wg show
+      <pre class="terminal">root@archive:~# <span class="blinking-cursor">wg show</span>
+      <span class="archive">
 interface: wg0
 public key: REDACTED=
 private key: (hidden)
@@ -115,13 +138,14 @@ endpoint: 162.217.170.62:51820
 allowed ips: 192.168.1.0/24
 latest handshake: 1 minute, 31 seconds ago
 transfer: 4.17 MiB received, 62.18 MiB sent
-persistent keepalive: every 1 minute</pre>
+persistent keepalive: every 1 minute</span></pre>
     </div>
 
     <div class="section">
       <h2>PI Configs</h2>
       <h3>NGINX Reverse Proxy</h3>
-      <pre class="terminal"><span class="pi">root@pi:~#</span> cat /etc/nginx/conf.d/jswiki.conf
+      <pre class="terminal">root@pi:~#<span class="blinking-cursor">cat /etc/nginx/conf.d/jswiki.conf</span>
+      <span class="archive">
 server {
   listen 80;
   server_name 162.217.170.62;
@@ -140,10 +164,11 @@ server {
   }
   ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
   ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
-}</pre>
+}</span></pre>
 
       <h3>WireGuard Config</h3>
-      <pre class="terminal"><span class="pi">root@pi:~#</span> cat /etc/wireguard/wg0.conf
+      <pre class="terminal">root@pi:~# <span class="blinking-cursor">cat /etc/wireguard/wg0.conf</span>
+      <span class="archive">
 [Interface]
 Address = 192.168.1.3/24
 SaveConfig = false
@@ -153,10 +178,11 @@ PrivateKey = REDACTED=
 [Peer]
 PublicKey = REDACTED=
 AllowedIPs = 192.168.1.0/24
-PersistentKeepalive = 60</pre>
+PersistentKeepalive = 60</span></pre>
 
       <h3>WireGuard Status</h3>
-      <pre class="terminal"><span class="pi">root@pi:~#</span> wg show
+      <pre class="terminal">root@pi:~# <span class="blinking-cursor">wg show</span>
+      <span class="archive">
 interface: wg0
 public key: REDACTED=
 private key: (hidden)
@@ -167,21 +193,44 @@ endpoint: 98.97.37.84:25391
 allowed ips: 192.168.1.0/24
 latest handshake: 44 seconds ago
 transfer: 61.56 MiB received, 4.18 MiB sent
-persistent keepalive: every 1 minute</pre>
+persistent keepalive: every 1 minute<span></pre>
     </div>
 
-    <div class="section">
-      <h2>Sources</h2>
-      <ul class="sources">
-        <li><a href="https://blog.fuzzymistborn.com/vps-reverse-proxy-tunnel/" target="_blank">Fuzzymistborn: VPS Reverse Proxy Tunnel</a></li>
-        <li><a href="https://whynot.guide/posts/notes/wireguard-reverse-tunneling/" target="_blank">WhyNot Guide: WireGuard Reverse Tunneling</a></li>
-        <li><a href="https://www.nginx.com/" target="_blank">NGINX</a></li>
-        <li><a href="https://wiki.nftables.org/wiki-nftables/index.php/Main_Page" target="_blank">nftables Wiki</a></li>
-        <li><a href="https://www.wireguard.com/" target="_blank">WireGuard</a></li>
-        <li><a href="https://github.com/requarks/wiki" target="_blank">JS Wiki on GitHub</a></li>
-      </ul>
+<table class="sources">
+    <thead>
+        <tr>
+            <th>Sources</th>
+            <th>Links</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Fuzzymistborn: VPS Reverse Proxy Tunnel</td>
+            <td><a href="https://blog.fuzzymistborn.com/vps-reverse-proxy-tunnel/" target="_blank">🌐</a></td>
+        </tr>
+        <tr>
+            <td>WhyNot Guide: WireGuard Reverse Tunneling</td>
+            <td><a href="https://whynot.guide/posts/notes/wireguard-reverse-tunneling/" target="_blank">🌐</a></td>
+        </tr>
+        <tr>
+            <td>NGINX</td>
+            <td><a href="https://www.nginx.com/" target="_blank">🌐</a></td>
+        </tr>
+        <tr>
+            <td>nftables Wiki</td>
+            <td><a href="https://wiki.nftables.org/wiki-nftables/index.php/Main_Page" target="_blank">🌐</a></td>
+        </tr>
+        <tr>
+            <td>WireGuard</td>
+            <td><a href="https://www.wireguard.com/" target="_blank">🌐</a></td>
+        </tr>
+        <tr>
+            <td>JS Wiki on GitHub</td>
+            <td><a href="https://github.com/requarks/wiki" target="_blank">🌐</a></td>
+        </tr>
+    </tbody>
+</table>
     </div>
-<!--   </div> -->
 
     </main>
 
